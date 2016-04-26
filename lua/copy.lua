@@ -30,18 +30,9 @@ function create_index(table_id)
 end
 
 function thread_init(thread_id)
-   local index_name
-   local i
-
    set_vars()
 
    print("thread prepare"..thread_id)
-
-   if (oltp_secondary) then
-     index_name = "KEY xid"
-   else
-     index_name = "PRIMARY KEY"
-   end
 
    for i=thread_id+1, oltp_tables_count, num_threads  do
      copydata(i)
