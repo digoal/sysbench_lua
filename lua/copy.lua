@@ -3,12 +3,6 @@ pathtest = string.match(test, "(.*/)") or ""
 dofile(pathtest .. "common.lua")
 
 function copydata(table_id)
-  local ctl
-  local f
-  local i
-  local c_val
-  local pad_val
-  local content
   local query
 
   query = [[
