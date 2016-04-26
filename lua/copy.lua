@@ -23,6 +23,7 @@ PRIMARY KEY (id)
   db_query(query)
 
   os.execute ('export PGPASSWORD=' .. pgsql_password)
+  os.execute ('rm -f sbtest' .. table_id .. '.dat')
   os.execute ('mknod sbtest' .. table_id .. '.dat p')
   os.execute ('./gendata ' .. oltp_table_size .. ' >> sbtest'..table_id ..'.dat &')
   os.execute ('cat sbtest' .. table_id .. '.dat | psql -h ' .. pgsql_host .. ' -p ' .. pgsql_port .. ' -U ' .. pgsql_user .. ' -d ' .. pgsql_db .. ' -c "copy sbtest' .. table_id .. ' from stdin with csv"')
