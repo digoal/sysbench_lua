@@ -80,7 +80,7 @@ function thread_init(thread_id)
    end
    pars = string.sub(pars, 1, string.len(pars) - 2)
    vars = string.sub(vars, 1, string.len(vars) - 2)
-   db_query("prepare p2(" .. pars .. ") as select c from " .. table_name .. " WHERE id in (" .. vars .. ")")
+   db_query("prepare p2(" .. pars .. ") as select id,k,c,pad from " .. table_name .. " WHERE id in (" .. vars .. ")")
 
    -- select c from tbl where id between $1 and $2;
    db_query("prepare p3(int,int) as SELECT c FROM " .. table_name .. " WHERE id BETWEEN $1 and $2")
