@@ -71,18 +71,15 @@ function thread_init(thread_id)
    -- select c from tbl where id = $1;
    db_query("prepare p1(int) as select c from " .. table_name .. " WHERE id=$1")
 
-   -- select c from tbl where id in ($1,...$n);
+   -- select id,k,c,pad from tbl where id in ($1,...$n);
    pars = ""
    vars = ""
    for i = 1,random_points do
-      if ( i < random_points ) then
-        pars = pars .. "int, "
-        vars = vars .. "$" .. i .. ", "
-      else
-        pars = pars .. "int"
-        vars = vars .. "$" .. i
-      end
+      pars = pars .. "int, "
+      vars = vars .. "$" .. i .. ", "
    end
+   pars = string.sub(pars, 1, string.len(pars) - 2)
+   vars = string.sub(vars, 1, string.len(vars) - 2)
    db_query("prepare p2(" .. pars .. ") as select c from " .. table_name .. " WHERE id in (" .. vars .. ")")
 
    -- select c from tbl where id between $1 and $2;
@@ -125,12 +122,10 @@ function event(thread_id)
 
    evars = ""
    for i = 1,random_points do
-     if ( i < random_points ) then
-       evars = evars .. sb_rand(1, oltp_table_size) .. ", "
-     else
-       evars = evars .. sb_rand(1, oltp_table_size)
-     end
+
+     evars = evars .. sb_rand(1, oltp_table_size) .. ", "
    end
+   evars = string.sub(evars, 1, string.len(evars) - 2)
    db_query("execute p2(" .. evars .. ")")
 
    for i=1, oltp_simple_ranges do
