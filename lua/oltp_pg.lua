@@ -122,7 +122,6 @@ function event(thread_id)
 
    evars = ""
    for i = 1,random_points do
-
      evars = evars .. sb_rand(1, oltp_table_size) .. ", "
    end
    evars = string.sub(evars, 1, string.len(evars) - 2)
