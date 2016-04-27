@@ -1,6 +1,6 @@
 -- use case
 
---     ./sysbench_pg --test=lua/copy.lua \
+--     ./sysbench_pg --test=lua/parallel_init_pg.lua \
 --       --db-driver=pgsql \
 --       --pgsql-host=$PGDATA \
 --       --pgsql-port=1921 \
@@ -12,7 +12,7 @@
 --       --num-threads=64 \
 --       cleanup
 
---     ./sysbench_pg --test=lua/copy.lua \
+--     ./sysbench_pg --test=lua/parallel_init_pg.lua \
 --       --db-driver=pgsql \
 --       --pgsql-host=$PGDATA \
 --       --pgsql-port=1921 \
