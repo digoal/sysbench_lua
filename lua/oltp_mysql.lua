@@ -1,3 +1,44 @@
+-- use case
+
+--     ./sysbench_mysql --test=lua/parallel_init_mysql.lua \
+--       --db-driver=mysql \
+--       --mysql-host=ip \
+--       --mysql-port=1921 \
+--       --mysql-user=mysql \
+--       --mysql-password=mysql \
+--       --mysql-db=mysql \
+--       --oltp-tables-count=64 \
+--       --oltp-table-size=1000000 \
+--       --num-threads=64 \
+--       cleanup
+
+--     ./sysbench_mysql --test=lua/parallel_init_mysql.lua \
+--       --db-driver=mysql \
+--       --mysql-host=ip \
+--       --mysql-port=1921 \
+--       --mysql-user=mysql \
+--       --mysql-password=mysql \
+--       --mysql-db=mysql \
+--       --oltp-tables-count=64 \
+--       --oltp-table-size=1000000 \
+--       --num-threads=64 \
+--       run
+
+--     ./sysbench_mysql --test=lua/oltp_mysql.lua \
+--       --db-driver=mysql \
+--       --mysql-host=ip \
+--       --mysql-port=1921 \
+--       --mysql-user=mysql \
+--       --mysql-password=mysql \
+--       --mysql-db=mysql \
+--       --oltp-tables-count=64 \
+--       --oltp-table-size=1000000 \
+--       --num-threads=64 \
+--       --max-time=120  \
+--       --max-requests=0 \
+--       --report-interval=1 \
+--       run
+
 pathtest = string.match(test, "(.*/)") or ""
 
 dofile(pathtest .. "common.lua")
