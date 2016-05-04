@@ -58,7 +58,7 @@ end
 
 function create_index(table_id)
   db_query("select setval('sbtest" .. table_id .. "_id_seq', " .. (oltp_table_size+1) .. ")" )
-  db_query("CREATE INDEX k_" .. table_id .. " on sbtest" .. table_id .. "(k)")
+  db_query("CREATE INDEX k_" .. table_id .. " on sbtest" .. table_id .. "(k) tablespace tbs" .. (table_id%tbs) )
 end
 
 function thread_init(thread_id)
