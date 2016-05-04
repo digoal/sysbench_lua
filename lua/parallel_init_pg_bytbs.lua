@@ -4,7 +4,7 @@
 
 --   you must create tablespace first, and set tbs= how many tablespace created . (like tbs0 tbs1 tbs2 ... in all testing file system)
 
---     ./sysbench_pg --test=lua/parallel_init_pg.lua \
+--     ./sysbench_pg --test=lua/parallel_init_pg_bytbs.lua \
 --       --db-driver=pgsql \
 --       --pgsql-host=$PGDATA \
 --       --pgsql-port=1921 \
@@ -16,7 +16,7 @@
 --       --num-threads=64 \
 --       cleanup
 
---     ./sysbench_pg --test=lua/parallel_init_pg.lua \
+--     ./sysbench_pg --test=lua/parallel_init_pg_bytbs.lua \
 --       --db-driver=pgsql \
 --       --pgsql-host=$PGDATA \
 --       --pgsql-port=1921 \
